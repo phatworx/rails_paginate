@@ -4,16 +4,16 @@ module RailsPaginate
     attr_reader :current_page, :per_page, :pages, :array_or_relation
 
     # initialize collection
-    def initialize(array_or_relation, per_page, page = nil)
+    def initialize(array_or_relation, page = nil, per_page = nil)
       # validate
-      raise ArgumentError, "per_page is not valid" if per_page <= 0
+      raise ArgumentError, "per_page is not valid" if not per_page.nil? and per_page <= 0 
       raise ArgumentError, "result is not an array or relation" unless array_or_relation.respond_to? :count
 
       # array_or_relation
       @array_or_relation = array_or_relation
 
       # save meta data
-      @per_page          = per_page.to_i
+      @per_page          = per_page || RailsPaginate.per_page
 
       # load page with result
       load_page(page) unless page.nil?
