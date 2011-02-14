@@ -1,31 +1,54 @@
 module RailsPaginate
   # method modules
   class Collection < Array
-    attr_reader :current_page, :per_page, :total, :pages
+    attr_reader :current_page, :per_page, :pages, :array_or_relation
 
     # initialize collection
-    def initialize(results, page, total, per_page)
+    def initialize(array_or_relation, per_page, page = nil)
       # validate
-      raise ArgumentError, "total is not valid" if total <= 0
       raise ArgumentError, "per_page is not valid" if per_page <= 0
-      raise ArgumentError, "result is not an array" unless results.is_a? Array
+      raise ArgumentError, "result is not an array or relation" unless array_or_relation.respond_to? :count
 
-      # replace
-      replace(results)
+      # array_or_relation
+      @array_or_relation = array_or_relation
 
       # save meta data
-      @per_page = per_page.to_i
-      @total    = total.to_i
-      @pages    = (total / per_page.to_f).ceil
+      @per_page          = per_page.to_i
 
+      # load page with result
+      load_page(page) unless page.nil?
+    end
+
+    # switch page
+    def load_page(page)
       # jump to correct page
       page = page.to_i if page.is_a? String
       page = first_page unless page.is_a? Fixnum
       page = first_page unless page > 0
-      page = last_page unless page > pages
+      page = last_page if page > pages
 
       # save page
-      @current_page = page.to_i
+      @current_page = page
+
+      # load result
+      load_result
+    end
+
+    # load result from input array_or_relation to internal array
+    def load_result
+      if array_or_relation.is_a? Array
+        self.replace array_or_relation[offset..(offset + per_page - 1)]
+      else
+        self.replace array_or_relation.limit(:per_page).offset(offset).all
+      end
+    end
+
+    def total
+      @total ||= array_or_relation.count
+    end
+
+    def pages
+      @pages ||= (total / per_page.to_f).ceil
     end
 
     # current page out of range
