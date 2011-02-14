@@ -33,7 +33,7 @@ module RailsPaginate
 
         if method.is_a? String
           method.gsub!(/^[a-z]|\s+[a-z]/) { |a| a.upcase }
-          method = "RailsPaginate::Method::#{generator}".constantize
+          method = "RailsPaginate::Method::#{method}".constantize
         end
 
         @method = method.new &block
@@ -44,7 +44,7 @@ module RailsPaginate
       require 'rails_paginate/core_ext/array'
 
       # set default method
-      method :sliding
+      # method :sliding
     end
   end
 end
