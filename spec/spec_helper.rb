@@ -1,5 +1,7 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
+require 'simplecov'
+SimpleCov.start 'rails'
 require 'rspec'
 require 'rails_paginate'
 

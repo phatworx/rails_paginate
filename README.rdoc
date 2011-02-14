@@ -1,6 +1,21 @@
 = rails_paginate
 
-Description goes here.
+a rails paginate plugin with multi paging type and multi layout support
+
+== Development
+don't use!
+
+== Installation
+Add the following line to your Gemfile
+  gem "rails_paginate"
+
+If you want to use it as plugin
+  rails plugin install git://github.com/traxanos/rails_paginate.git
+
+== Maintainers
+
+* Team Phatworx (http://github.com/phatworx)
+* Marco Scholl (http://github.com/traxanos)
 
 == Contributing to rails_paginate
  
@@ -14,6 +29,5 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2011 Marco Scholl. See LICENSE.txt for
-further details.
+Copyright (c) 2011 Marco Scholl. See LICENSE.txt for further details.
 
