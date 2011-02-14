@@ -28,7 +28,7 @@ end
 
 describe Array do
   before :all do
-    @array = (1..199).to_a
+    @array = (1..10).to_a
   end
   describe :paginate do
     subject { @array.paginate 1 }
@@ -46,6 +46,7 @@ describe RailsPaginate::Collection do
 
   context "without per_page on first page" do
     before(:all) { @collection = @array.paginate :page => 1 }
+
     subject { @collection }
     specify { @collection.count.should == 10 }
     specify { @collection.pages.should == 20 }
@@ -58,10 +59,12 @@ describe RailsPaginate::Collection do
     specify { @collection.out_of_range?.should == false }
     specify { @collection.first_page?.should be_true }
     specify { @collection.last_page?.should be_false }
+
   end
 
   context "without per_page on page 10" do
     before(:all) { @collection = @array.paginate :page => 10 }
+
     subject { @collection }
     specify { @collection.count.should == 10 }
     specify { @collection.pages.should == 20 }
@@ -74,10 +77,12 @@ describe RailsPaginate::Collection do
     specify { @collection.out_of_range?.should == false }
     specify { @collection.first_page?.should be_false }
     specify { @collection.last_page?.should be_false }
+
   end
 
   context "without per_page on last page" do
     before(:all) { @collection = @array.paginate :page => 20 }
+
     subject { @collection }
     specify { @collection.count.should == 9 }
     specify { @collection.pages.should == 20 }
@@ -90,5 +95,7 @@ describe RailsPaginate::Collection do
     specify { @collection.out_of_range?.should == false }
     specify { @collection.first_page?.should be_false }
     specify { @collection.last_page?.should be_true }
+    
   end
+
 end
