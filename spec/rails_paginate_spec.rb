@@ -29,9 +29,12 @@ end
 
 describe Array, "with 234 items" do
   before(:all) { @array = (1..234).to_a }
+  subject { @array }
+  specify { should respond_to :paginate }
+
   describe :paginate, "first page" do
     subject { @array.paginate 1 }
-    it { should be_a RailsPaginate::Collection }
+    specify { should be_a RailsPaginate::Collection }
   end
 end
 
