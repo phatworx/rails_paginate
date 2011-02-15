@@ -14,6 +14,17 @@ describe RailsPaginate do
         before { subject.page_param = :p }
         its(:page_param) { should be :p }
       end
+
+      describe :renderer, "set to :html_default" do
+        before { subject.renderer :html_default }
+        its(:renderer) { should be_a RailsPaginate::Renderer::HtmlDefault }
+      end
+
+      describe :renderer, "set to :html_list" do
+        before { subject.renderer :html_list }
+        its(:renderer) { should be_a RailsPaginate::Renderer::HtmlList }
+      end
+
     end
   end
 end

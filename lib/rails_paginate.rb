@@ -2,7 +2,7 @@ require 'active_support/all'
 
 # nice rails paginate plugin
 module RailsPaginate
-  autoload :Method, 'rails_paginate/method'
+  autoload :Renderer, 'rails_paginate/renderer'
   autoload :Collection, 'rails_paginate/collection'
 
   # page_param
@@ -25,18 +25,21 @@ module RailsPaginate
       yield self
     end
 
-    def method(method = nil, &block)
-      if method.nil?
-        @method
+    # renderer
+    def renderer(renderer = nil, &block)
+      if renderer.nil?
+        @renderer
       else
-        method = method.to_s if method.is_a? Symbol
-
-        if method.is_a? String
-          method.gsub!(/^[a-z]|\s+[a-z]/) { |a| a.upcase }
-          method = "RailsPaginate::Method::#{method}".constantize
+        renderer = renderer.to_s if renderer.is_a? Symbol
+        if renderer.is_a? String
+          renderer = "rails_paginate/renderer/#{renderer}".camelize.constantize
         end
 
-        @method = method.new &block
+        if block_given?
+          @renderer = renderer.new &block
+        else
+          @renderer = renderer.new
+        end
       end
     end
 
@@ -44,7 +47,7 @@ module RailsPaginate
       require 'rails_paginate/core_ext/array'
 
       # set default method
-      # method :sliding
+      renderer :html_default
     end
   end
 end
