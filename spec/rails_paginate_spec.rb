@@ -45,7 +45,7 @@ describe RailsPaginate::Collection do
 
   describe Item, "with 561 items" do
     before(:all) do
-      561.times { |x| Item.create! :dummy => "Item #{x}" }
+        561.times { |x| Item.create! :dummy => "Item #{x}" }
     end
     subject { Item }
     specify { should respond_to :paginate }

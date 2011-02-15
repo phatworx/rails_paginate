@@ -13,10 +13,10 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "rails_paginate"
-  gem.homepage = "http://github.com/traxanos/rails_paginate"
+  gem.homepage = "http://github.com/phatworx/rails_paginate"
   gem.license = "MIT"
-  gem.summary = %Q{new rails paginate plugin}
-  gem.description = %Q{a rails paginate plugin with multi paging type and multi layout support}
+  gem.summary = %Q{a new rails 3 paginate plugin}
+  gem.description = %Q{a new rails 3 paginate plugin as will_paginate replacement}
   gem.email = "develop@marco-scholl.de"
   gem.authors = ["Marco Scholl"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,

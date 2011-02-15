@@ -1,9 +1,18 @@
 = rails_paginate
 
-a rails paginate plugin with multi paging type and multi layout support
+a new rails 3 paginate plugin as will_paginate replacement
+better as will_paginate
 
-== Development
-don't use!
+== Development status
+
+* Collection - 100%
+* -> Array - 100%
+* -> ActiveRecord - 100%
+* -> Rspec - 100%
+* ViewHelper - 10%
+* -> HtmlDefault
+* -> HtmlList
+* -> Rspec
 
 == Installation
 Add the following line to your Gemfile
@@ -11,6 +20,17 @@ Add the following line to your Gemfile
 
 If you want to use it as plugin
   rails plugin install git://github.com/traxanos/rails_paginate.git
+
+== Using
+
+=== ActiveRecord
+
+  User.order(:login).where(:active => 1).paginate :page => 1, :per_page => 10
+
+=== Array
+
+  (1..555).to_a.paginate :page => 1, :per_page => 10
+
 
 == Maintainers
 
