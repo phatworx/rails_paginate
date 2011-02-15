@@ -6,21 +6,16 @@ describe RailsPaginate do
     
 
     RailsPaginate.setup do |setup|
+      subject { setup }
 
       describe :per_page, "set to 15" do
-        before { setup.per_page = 15 }
-        context :per_page do
-          subject { setup.per_page }
-          it { should be 15 }
-        end
+        before { subject.per_page = 15 }
+        its(:per_page) { should be 15 }
       end
 
       describe :page_param, "set to :p" do
-        before { setup.page_param = :p }
-        context :page_param do
-          subject { setup.page_param }
-          it { should be :p }
-        end
+        before { subject.page_param = :p }
+        its(:page_param) { should be :p }
       end
 
     end
