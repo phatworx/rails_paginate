@@ -51,11 +51,6 @@ module RailsPaginate
       @pages ||= (total / per_page.to_f).ceil
     end
 
-    # current page out of range
-    def out_of_range?
-      current_page > pages
-    end
-
     # get offset
     def offset
       (current_page - 1) * per_page
