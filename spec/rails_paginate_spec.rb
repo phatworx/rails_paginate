@@ -30,9 +30,9 @@ describe RailsPaginate::Collection do
     subject { @array }
     specify { should respond_to :paginate }
 
-    describe :paginate, "return" do
+    describe "return of #paginate" do
       subject { @array.paginate 1 }
-      specify { should be_a RailsPaginate::Collection }
+      it { should be_a RailsPaginate::Collection }
     end
 
     context "without per_page on first page" do
