@@ -25,6 +25,13 @@ describe RailsPaginate do
         its(:renderer) { should be_a RailsPaginate::Renderer::HtmlList }
       end
 
+      describe :renderer, "set with block" do
+        setup.renderer :html_list do |renderer_setup|
+          subject { renderer_setup }
+          its(:renderer) { should be_a RailsPaginate::Renderer::HtmlDefault }
+        end
+      end
+
     end
   end
 end
