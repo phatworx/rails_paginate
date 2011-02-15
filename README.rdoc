@@ -1,7 +1,6 @@
 = rails_paginate
 
 a new rails 3 paginate plugin as will_paginate replacement
-better as will_paginate
 
 == Development status
 

@@ -17,7 +17,6 @@ module RailsPaginate
   mattr_accessor :method
   @@method = :sliding
 
-
   class << self
     # to configure rails_paginate
     # for a sample look the readme.rdoc file
@@ -43,6 +42,7 @@ module RailsPaginate
       end
     end
 
+    # init rails paginate
     def init
       require 'rails_paginate/core_ext/active_record'
       require 'rails_paginate/core_ext/array'
