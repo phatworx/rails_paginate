@@ -39,6 +39,7 @@ Gem::Specification.new do |s|
     "lib/rails_paginate/renderer/base.rb",
     "lib/rails_paginate/renderer/html_default.rb",
     "lib/rails_paginate/renderer/html_list.rb",
+    "rails_paginate.gemspec",
     "spec/db/migrate/20110215200000_create_items.rb",
     "spec/rails_paginate_spec.rb",
     "spec/renderer_html_default_spec.rb",
