@@ -44,6 +44,7 @@ module RailsPaginate
     end
 
     def init
+      require 'rails_paginate/core_ext/active_record'
       require 'rails_paginate/core_ext/array'
 
       # set default method

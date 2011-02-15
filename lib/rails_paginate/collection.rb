@@ -39,7 +39,7 @@ module RailsPaginate
       if array_or_relation.is_a? Array
         self.replace array_or_relation[offset..(offset + per_page - 1)]
       else
-        self.replace array_or_relation.limit(:per_page).offset(offset).all
+        self.replace array_or_relation.limit(@per_page).offset(offset).all
       end
     end
 
@@ -59,15 +59,6 @@ module RailsPaginate
     # need paginate
     def need_paginate?
       total > per_page
-    end
-
-    # return count of current page
-    def current_results
-      if last_page?
-        total % per_page
-      else
-        per_page
-      end
     end
 
     # return first page
