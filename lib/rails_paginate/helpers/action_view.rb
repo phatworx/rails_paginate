@@ -20,7 +20,7 @@ module RailsPaginate::Helpers
       attributes[:id] = options[:id] unless options[:id].blank?
 
       content_tag :div, attributes do
-        RailsPaginate.renderer(renderer).new(collection, options).render
+        puts RailsPaginate.renderer(renderer).new(self, collection, options).render
       end
     end
   end

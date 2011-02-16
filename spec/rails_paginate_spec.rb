@@ -23,12 +23,6 @@ describe RailsPaginate do
       subject { @renderer }
       it { should eq RailsPaginate::Renderers::HtmlDefault }
     end
-
-    context ":html_list" do
-      before { @renderer = RailsPaginate.renderer :html_list }
-      subject { @renderer }
-      it { should eq RailsPaginate::Renderers::HtmlList }
-    end
   end
 end
 
