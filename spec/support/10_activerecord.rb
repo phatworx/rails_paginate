@@ -1,5 +1,5 @@
 ActiveRecord::Base.establish_connection({
-  :adapter => 'sqlite3',
+  :adapter => (defined?(JRUBY_VERSION) ? 'jdbcsqlite3' : 'sqlite3'),
   :database => ":memory:"
 })
 ActiveRecord::Migrator.up(File.join(File.dirname(__FILE__), '..', 'db', 'migrate'))

@@ -2,11 +2,16 @@ source "http://rubygems.org"
 gem "rails", "~> 3.0.0"
 
 group :development do
-  gem "sqlite3"
   gem "autotest"
   gem "bundler"
   gem "jeweler"
-  gem 'simplecov', :require => false
   gem "rspec"
   gem "yard"
+  if defined? JRUBY_VERSION
+    gem "activerecord-jdbc-adapter"
+    gem "activerecord-jdbcsqlite3-adapter"
+  else
+    gem 'simplecov', :require => false
+    gem "sqlite3"
+  end
 end

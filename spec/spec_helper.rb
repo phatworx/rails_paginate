@@ -1,7 +1,10 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-require 'simplecov'
-SimpleCov.start 'rails'
+unless defined? JRUBY_VERSION
+  require 'simplecov'
+  SimpleCov.start 'rails'
+end
+
 require 'rspec'
 require 'rails_paginate'
 
