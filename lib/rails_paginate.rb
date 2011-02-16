@@ -42,14 +42,9 @@ module RailsPaginate
     # init rails paginate
     def init
       ::Array.send(:include, Helpers::Array)
-      ::ActiveRecord::Base.send(:extend, Helpers::ActiveRecord)# if defined? ::ActiveRecord
+      ::ActiveRecord::Base.send(:extend, Helpers::ActiveRecord) if defined?(::ActiveRecord::Base)
+      ::ActionView::Base.send(:include, Helpers::ActionView) if defined?(::ActionView::Base)
 
-      #require 'rails_paginate/core_ext/active_record'
-      #require 'rails_paginate/core_ext/array'
-
-      #::ActiveSupport.on_load(:active_record) do
-      #  include DeviseSecurityExtension::Controllers::Helpers
-      #end
 
       # set default method
       renderer :html_default

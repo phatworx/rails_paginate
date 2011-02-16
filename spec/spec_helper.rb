@@ -7,6 +7,7 @@ end
 
 require 'rspec'
 require 'active_record'
+require 'action_view'
 require 'rails_paginate'
 
 # Requires supporting files with custom matchers and macros, etc,
