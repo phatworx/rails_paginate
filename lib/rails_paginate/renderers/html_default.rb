@@ -3,19 +3,23 @@ module RailsPaginate::Renderers
   class HtmlDefault < Base
     def render
       view.content_tag(:ul) do
-        html = ""
-        html += view.content_tag(:li) do
-          view.link_to "First page", collection.first_page.to_s
+        html = "\n"
+        html += view.content_tag(:li, :class => "first_page") do
+          link_to_page collection.first_page, 'paginate.first_page_label'
         end
-        html += view.content_tag(:li) do
-          view.link_to_unless collection.previous_page.nil?, "Previous page", collection.previous_page.to_s
+        html += "\n"
+        html += view.content_tag(:li, :class => "previous_page") do
+          link_to_page collection.previous_page, 'paginate.previous_page_label'
         end
-        html += view.content_tag(:li) do
-          view.link_to_unless collection.next_page.nil?, "Next page", collection.next_page.to_s
+        html += "\n"
+        html += view.content_tag(:li, :class => "next_page") do
+          link_to_page collection.next_page, 'paginate.next_page_label'
         end
-        html += view.content_tag(:li) do
-          view.link_to "Last page", collection.first_page.to_s
+        html += "\n"
+        html += view.content_tag(:li, :class => "last_page") do
+          link_to_page collection.last_page, 'paginate.last_page_label'
         end
+        html += "\n"
         html.html_safe
       end
     end
