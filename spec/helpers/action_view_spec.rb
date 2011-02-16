@@ -3,6 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe RailsPaginate::Helpers::ActionView do
   context "ActionView::Base.new" do
     let(:action_view) { ActionView::Base.new }
+    let(:collection) { (1..55).to_a.paginate }
     subject { action_view }
     specify { should respond_to :paginate }
 
@@ -20,11 +21,20 @@ describe RailsPaginate::Helpers::ActionView do
       context "#paginate an Array with #{config[:items]} items, page #{config[:page]}, per_page #{config[:per_page]}" do
         before do
           @collection = (1..config[:items]).to_a.paginate :page => config[:page], :per_page => config[:per_page]
-          @paginator = action_view.paginate @collection
+          @pagination = action_view.paginate @collection
+          puts @pagination
         end
-        subject { @paginator }
+        subject { @pagination }
         it("return should be a kind of String") { should be_a String }
       end
     end
+
+    context "#paginate with class => dummy" do
+      before { @pagination = action_view.paginate collection, :class => "dummy" }
+      subject { @pagination }
+
+      it { subject.should match(/^<div class="pagination dummy">(.*)<\/div>$/) }
+    end
+
   end
 end
