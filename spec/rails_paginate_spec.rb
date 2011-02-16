@@ -55,10 +55,26 @@ describe RailsPaginate::Collection do
       it { should be_a RailsPaginate::Collection }
     end
 
+    context "without any result" do
+      before(:all) { @collection = Item.where(:dummy => "dasfindeterbestimmtnicht").paginate :page => 1 }
+      subject { @collection }
+      its(:count) { should eq 0 }
+      its(:current_page) { should eq 1 }
+      its(:pages) { should eq 1 }
+      its(:total) { should eq 0 }
+      its(:offset) { should eq 0 }
+      its(:next_page) { should be_nil }
+      its(:previous_page) { should be_nil }
+      its(:need_paginate?) { should be_false }
+      its(:first_page?) { should be_true }
+      its(:last_page?) { should be_true }
+    end
+
     context "without per_page on first page" do
       before(:all) { @collection = Item.paginate :page => 1 }
       subject { @collection }
       its(:count) { should eq 10 }
+      its(:current_page) { should eq 1 }
       its(:pages) { should eq 57 }
       its(:total) { should eq 561 }
       its(:offset) { should eq 0 }
@@ -73,6 +89,7 @@ describe RailsPaginate::Collection do
       before(:all) { @collection = Item.paginate :page => 10 }
       subject { @collection }
       its(:count) { should eq 10 }
+      its(:current_page) { should eq 10 }
       its(:pages) { should eq 57 }
       its(:total) { should eq 561 }
       its(:offset) { should eq 90 }
@@ -87,6 +104,7 @@ describe RailsPaginate::Collection do
       before(:all) { @collection = Item.paginate :page => 57 }
       subject { @collection }
       its(:count) { should eq 1 }
+      its(:current_page) { should eq 57 }
       its(:pages) { should eq 57 }
       its(:total) { should eq 561 }
       its(:offset) { should eq 560 }
@@ -97,10 +115,11 @@ describe RailsPaginate::Collection do
       its(:last_page?) { should be_true }
     end
 
-    context "with per_page 60 on page 4" do
+    context "with per_page 60 on page 3" do
       before(:all) { @collection = Item.paginate :page => 3, :per_page => 60 }
       subject { @collection }
       its(:count) { should eq 60 }
+      its(:current_page) { should eq 3 }
       its(:pages) { should eq 10 }
       its(:total) { should eq 561 }
       its(:offset) { should eq 120 }
@@ -111,6 +130,32 @@ describe RailsPaginate::Collection do
       its(:last_page?) { should be_false }
     end
 
+  end
+
+  describe Array, "with 0 items" do
+    before(:all) { @array = [] }
+    subject { @array }
+    specify { should respond_to :paginate }
+
+    describe "return of #paginate" do
+      subject { @array.paginate }
+      it { should be_a RailsPaginate::Collection }
+    end
+
+    context "without per_page on first page" do
+      before(:all) { @collection = @array.paginate :page => 1 }
+      subject { @collection }
+      its(:count) { should eq 0 }
+      its(:current_page) { should eq 1 }
+      its(:pages) { should eq 1 }
+      its(:total) { should eq 0 }
+      its(:offset) { should eq 0 }
+      its(:next_page) { should be_nil }
+      its(:previous_page) { should be_nil }
+      its(:need_paginate?) { should be_false }
+      its(:first_page?) { should be_true }
+      its(:last_page?) { should be_true }
+    end
   end
 
   describe Array, "with 199 items" do
@@ -127,6 +172,7 @@ describe RailsPaginate::Collection do
       before(:all) { @collection = @array.paginate :page => 1 }
       subject { @collection }
       its(:count) { should eq 10 }
+      its(:current_page) { should eq 1 }
       its(:pages) { should eq 20 }
       its(:total) { should eq 199 }
       its(:offset) { should eq 0 }
@@ -141,6 +187,7 @@ describe RailsPaginate::Collection do
       before(:all) { @collection = @array.paginate :page => 10 }
       subject { @collection }
       its(:count) { should eq 10 }
+      its(:current_page) { should eq 10 }
       its(:pages) { should eq 20 }
       its(:total) { should eq 199 }
       its(:offset) { should eq 90 }
@@ -155,6 +202,7 @@ describe RailsPaginate::Collection do
       before(:all) { @collection = @array.paginate :page => 20 }
       subject { @collection }
       its(:count) { should eq 9 }
+      its(:current_page) { should eq 20 }
       its(:pages) { should eq 20 }
       its(:total) { should eq 199 }
       its(:offset) { should eq 190 }
@@ -165,10 +213,11 @@ describe RailsPaginate::Collection do
       its(:last_page?) { should be_true }
     end
 
-    context "with per_page 60 on page 4" do
+    context "with per_page 60 on page 3" do
       before(:all) { @collection = @array.paginate :page => 3, :per_page => 60 }
       subject { @collection }
       its(:count) { should eq 60 }
+      its(:current_page) { should eq 3 }
       its(:pages) { should eq 4 }
       its(:total) { should eq 199 }
       its(:offset) { should eq 120 }
@@ -187,6 +236,7 @@ describe RailsPaginate::Collection do
       before(:all) { @collection = @array.paginate :page => 1 }
       subject { @collection }
       its(:count) { should eq 6 }
+      its(:current_page) { should eq 1 }
       its(:pages) { should eq 1 }
       its(:total) { should eq 6 }
       its(:offset) { should eq 0 }

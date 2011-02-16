@@ -37,10 +37,12 @@ module RailsPaginate
     # load result from input array_or_relation to internal array
     def load_result
       if array_or_relation.is_a? Array
-        self.replace array_or_relation[offset..(offset + per_page - 1)]
+        result = array_or_relation[offset..(offset + per_page - 1)]
       else
-        self.replace array_or_relation.limit(@per_page).offset(offset).all
+        result = array_or_relation.limit(per_page).offset(offset).all
       end
+
+      self.replace result.nil? ? [] : result
     end
 
     def total
@@ -48,7 +50,7 @@ module RailsPaginate
     end
 
     def pages
-      @pages ||= (total / per_page.to_f).ceil
+      @pages ||= total == 0 ? 1 : (total / per_page.to_f).ceil
     end
 
     # get offset
