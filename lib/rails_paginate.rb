@@ -14,6 +14,10 @@ module RailsPaginate
   mattr_accessor :per_page
   @@per_page = 20
 
+  # default_renderer
+  mattr_accessor :default_renderer
+  @@default_renderer = :html_default
+
   class << self
     # to configure rails_paginate
     # for a sample look the readme.rdoc file
@@ -25,7 +29,7 @@ module RailsPaginate
       raise ArgumentError, "renderer #{renderer} is not valid" unless (renderer.is_a? Symbol or renderer.is_a? String or renderer.is_a? Class)
       renderer = renderer.to_s if renderer.is_a? Symbol
       renderer = "rails_paginate/renderers/#{renderer}".camelize.constantize if renderer.is_a? String
-      renderer.new
+      renderer
     end
 
     # init rails paginate
