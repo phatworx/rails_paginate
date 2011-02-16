@@ -21,22 +21,11 @@ module RailsPaginate
       yield self
     end
 
-    # getter and setter for renderer configuration
-    def renderer(renderer = nil, &block)
-      if renderer.nil?
-        @renderer
-      else
-        renderer = renderer.to_s if renderer.is_a? Symbol
-        if renderer.is_a? String
-          renderer = "rails_paginate/renderers/#{renderer}".camelize.constantize
-        end
-
-        if block_given?
-          @renderer = renderer.new &block
-        else
-          @renderer = renderer.new
-        end
-      end
+    def renderer(renderer)
+      raise ArgumentError, "renderer #{renderer} is not valid" unless (renderer.is_a? Symbol or renderer.is_a? String or renderer.is_a? Class)
+      renderer = renderer.to_s if renderer.is_a? Symbol
+      renderer = "rails_paginate/renderers/#{renderer}".camelize.constantize if renderer.is_a? String
+      renderer.new
     end
 
     # init rails paginate

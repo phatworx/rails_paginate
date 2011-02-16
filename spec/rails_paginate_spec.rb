@@ -14,24 +14,20 @@ describe RailsPaginate do
         before { subject.page_param = :p }
         its(:page_param) { should be :p }
       end
+    end
+  end
 
-      describe :renderer, "set to :html_default" do
-        before { subject.renderer :html_default }
-        its(:renderer) { should be_a RailsPaginate::Renderers::HtmlDefault }
-      end
+  describe :renderer do
+    context ":html_default" do
+      before { @renderer = RailsPaginate.renderer :html_default }
+      subject { @renderer }
+      it { should be_a RailsPaginate::Renderers::HtmlDefault }
+    end
 
-      describe :renderer, "set to :html_list" do
-        before { subject.renderer :html_list }
-        its(:renderer) { should be_a RailsPaginate::Renderers::HtmlList }
-      end
-
-      describe :renderer, "set with block" do
-        setup.renderer :html_list do |renderer_setup|
-          subject { renderer_setup }
-          its(:renderer) { should be_a RailsPaginate::Renderers::HtmlDefault }
-        end
-      end
-
+    context ":html_list" do
+      before { @renderer = RailsPaginate.renderer :html_list }
+      subject { @renderer }
+      it { should be_a RailsPaginate::Renderers::HtmlList }
     end
   end
 end
@@ -45,7 +41,7 @@ describe RailsPaginate::Collection do
 
   describe Item, "with 561 items" do
     before(:all) do
-        561.times { |x| Item.create! :dummy => "Item #{x}" }
+      561.times { |x| Item.create! :dummy => "Item #{x}" }
     end
     subject { Item }
     specify { should respond_to :paginate }

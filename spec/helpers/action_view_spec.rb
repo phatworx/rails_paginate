@@ -22,7 +22,6 @@ describe RailsPaginate::Helpers::ActionView do
         before do
           @collection = (1..config[:items]).to_a.paginate :page => config[:page], :per_page => config[:per_page]
           @pagination = action_view.paginate @collection
-          puts @pagination
         end
         subject { @pagination }
         it("return should be a kind of String") { should be_a String }
