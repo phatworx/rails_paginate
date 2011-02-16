@@ -6,6 +6,7 @@ unless defined? JRUBY_VERSION
 end
 
 require 'rspec'
+require 'active_record'
 require 'rails_paginate'
 
 # Requires supporting files with custom matchers and macros, etc,

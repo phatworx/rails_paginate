@@ -2,8 +2,9 @@ require 'active_support/all'
 
 # nice rails paginate plugin
 module RailsPaginate
-  autoload :Renderer, 'rails_paginate/renderer'
+  autoload :Renderers, 'rails_paginate/renderers'
   autoload :Collection, 'rails_paginate/collection'
+  autoload :Helpers, 'rails_paginate/helpers'
 
   # page_param
   mattr_accessor :page_param
@@ -13,10 +14,6 @@ module RailsPaginate
   mattr_accessor :per_page
   @@per_page = 20
 
-  # method: :jumping or :sliding
-  mattr_accessor :method
-  @@method = :sliding
-
   class << self
     # to configure rails_paginate
     # for a sample look the readme.rdoc file
@@ -24,14 +21,14 @@ module RailsPaginate
       yield self
     end
 
-    # renderer
+    # getter and setter for renderer configuration
     def renderer(renderer = nil, &block)
       if renderer.nil?
         @renderer
       else
         renderer = renderer.to_s if renderer.is_a? Symbol
         if renderer.is_a? String
-          renderer = "rails_paginate/renderer/#{renderer}".camelize.constantize
+          renderer = "rails_paginate/renderers/#{renderer}".camelize.constantize
         end
 
         if block_given?
@@ -44,8 +41,15 @@ module RailsPaginate
 
     # init rails paginate
     def init
-      require 'rails_paginate/core_ext/active_record'
-      require 'rails_paginate/core_ext/array'
+      ::Array.send(:include, Helpers::Array)
+      ::ActiveRecord::Base.send(:extend, Helpers::ActiveRecord)# if defined? ::ActiveRecord
+
+      #require 'rails_paginate/core_ext/active_record'
+      #require 'rails_paginate/core_ext/array'
+
+      #::ActiveSupport.on_load(:active_record) do
+      #  include DeviseSecurityExtension::Controllers::Helpers
+      #end
 
       # set default method
       renderer :html_default

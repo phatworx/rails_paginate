@@ -1,5 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-describe RailsPaginate::Renderer::HtmlDefault do
+describe RailsPaginate::Renderers::HtmlDefault do
 
 end

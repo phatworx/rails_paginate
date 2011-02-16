@@ -1,4 +1,4 @@
-module RailsPaginate::Renderer
+module RailsPaginate::Renderers
   # normale renderer
   class HtmlDefault < Base
 

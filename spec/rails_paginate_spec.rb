@@ -17,18 +17,18 @@ describe RailsPaginate do
 
       describe :renderer, "set to :html_default" do
         before { subject.renderer :html_default }
-        its(:renderer) { should be_a RailsPaginate::Renderer::HtmlDefault }
+        its(:renderer) { should be_a RailsPaginate::Renderers::HtmlDefault }
       end
 
       describe :renderer, "set to :html_list" do
         before { subject.renderer :html_list }
-        its(:renderer) { should be_a RailsPaginate::Renderer::HtmlList }
+        its(:renderer) { should be_a RailsPaginate::Renderers::HtmlList }
       end
 
       describe :renderer, "set with block" do
         setup.renderer :html_list do |renderer_setup|
           subject { renderer_setup }
-          its(:renderer) { should be_a RailsPaginate::Renderer::HtmlDefault }
+          its(:renderer) { should be_a RailsPaginate::Renderers::HtmlDefault }
         end
       end
 
