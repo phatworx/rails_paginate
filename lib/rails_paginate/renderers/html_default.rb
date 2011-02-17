@@ -13,7 +13,7 @@ module RailsPaginate::Renderers
       content_tag(:ul) do
         html = "\n"
 
-        if show_first_last_page?
+        if show_first_page?
           html += content_tag(:li, :class => "first_page") do
             link_to_page collection.first_page, 'paginate.first_page_label'
           end
