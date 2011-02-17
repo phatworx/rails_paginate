@@ -37,7 +37,6 @@ Gem::Specification.new do |s|
     "lib/rails_paginate/renderers/base.rb",
     "lib/rails_paginate/renderers/html_default.rb",
     "rails_paginate.gemspec",
-    "spec/db/migrate/20110215200000_create_items.rb",
     "spec/helpers/action_view_spec.rb",
     "spec/helpers/active_record_spec.rb",
     "spec/helpers/array_spec.rb",
@@ -45,7 +44,8 @@ Gem::Specification.new do |s|
     "spec/renderers/base_spec.rb",
     "spec/renderers/html_default_spec.rb",
     "spec/spec_helper.rb",
-    "spec/support/10_activerecord.rb"
+    "spec/support/10_active_record.rb",
+    "spec/support/20_action_controller.rb"
   ]
   s.homepage = %q{http://github.com/phatworx/rails_paginate}
   s.licenses = ["MIT"]
@@ -53,7 +53,6 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.5.0}
   s.summary = %q{a new rails 3 paginate plugin}
   s.test_files = [
-    "spec/db/migrate/20110215200000_create_items.rb",
     "spec/helpers/action_view_spec.rb",
     "spec/helpers/active_record_spec.rb",
     "spec/helpers/array_spec.rb",
@@ -61,7 +60,8 @@ Gem::Specification.new do |s|
     "spec/renderers/base_spec.rb",
     "spec/renderers/html_default_spec.rb",
     "spec/spec_helper.rb",
-    "spec/support/10_activerecord.rb"
+    "spec/support/10_active_record.rb",
+    "spec/support/20_action_controller.rb"
   ]
 
   if s.respond_to? :specification_version then
