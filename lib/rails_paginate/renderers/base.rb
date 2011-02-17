@@ -4,9 +4,9 @@ module RailsPaginate::Renderers
     attr_reader :view, :collection, :options, :pager
 
     def initialize(view, collection, pager, options = {})
-      raise ArgumentError, "first argument muss be a RailsPaginate::Collection" unless collection.is_a? RailsPaginate::Collection
-      raise ArgumentError, "second argument muss be a Hash" unless options.is_a? Hash
-      raise ArgumentError, "third argument muss be an instance of RailsPaginate::Pagers::Base" unless pager.is_a? RailsPaginate::Pagers::Base
+      raise ArgumentError, "first argument must be a RailsPaginate::Collection" unless collection.is_a? RailsPaginate::Collection
+      raise ArgumentError, "second argument must be a Hash" unless options.is_a? Hash
+      raise ArgumentError, "third argument must be an instance of RailsPaginate::Pagers::Base" unless pager.is_a? RailsPaginate::Pagers::Base
       @options = options
       @collection = collection
       @view = view
