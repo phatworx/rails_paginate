@@ -32,9 +32,9 @@ module RailsPaginate::Renderers
     def render_pages
       html = ""
 
-      visible_pages.to_a.each do |page|
+      pager.visible_pages.each do |page|
         html += "\n"
-        html += view.content_tag(:li, :class => "pager") do
+        html += content_tag(:li, :class => "pager") do
           link_to_page page, page.nil? ? nil : 'paginate.pager'
         end
       end

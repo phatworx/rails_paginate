@@ -16,13 +16,18 @@ module RailsPaginate::Helpers
 
       # renderer
       renderer = options[:renderer] || RailsPaginate.default_renderer
+      pager = options[:pager] || RailsPaginate.default_pager
 
       attributes = {}
       attributes[:class] = "pagination #{options[:class]}".strip
       attributes[:id] = options[:id] unless options[:id].blank?
 
+      # load classes
+      renderer = RailsPaginate.renderer(renderer)
+      pager = RailsPaginate.pager(pager)
+
       content_tag :div, attributes do
-        RailsPaginate.renderer(renderer).new(self, collection, options).render
+        renderer.new(self, collection, pager.new(collection), options).render
       end
     end
   end

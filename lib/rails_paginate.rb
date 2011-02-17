@@ -5,6 +5,7 @@ module RailsPaginate
   autoload :Renderers, 'rails_paginate/renderers'
   autoload :Collection, 'rails_paginate/collection'
   autoload :Helpers, 'rails_paginate/helpers'
+  autoload :Pagers, 'rails_paginate/pagers'
 
   # page_param
   mattr_accessor :page_param
@@ -18,6 +19,10 @@ module RailsPaginate
   mattr_accessor :default_renderer
   @@default_renderer = :html_default
 
+  # default_pager
+  mattr_accessor :default_pager
+  @@default_pager = :slider
+
   class << self
     # to configure rails_paginate
     # for a sample look the readme.rdoc file
@@ -25,11 +30,20 @@ module RailsPaginate
       yield self
     end
 
+    # return renderer
     def renderer(renderer)
       raise ArgumentError, "renderer #{renderer} is not valid" unless (renderer.is_a? Symbol or renderer.is_a? String or renderer.is_a? Class)
       renderer = renderer.to_s if renderer.is_a? Symbol
       renderer = "rails_paginate/renderers/#{renderer}".camelize.constantize if renderer.is_a? String
       renderer
+    end
+
+    # return pager
+    def pager(pager)
+      raise ArgumentError, "pager #{pager} is not valid" unless (pager.is_a? Symbol or pager.is_a? String or pager.is_a? Class)
+      pager = pager.to_s if pager.is_a? Symbol
+      pager = "rails_paginate/pagers/#{pager}".camelize.constantize if pager.is_a? String
+      pager
     end
 
     # init rails paginate

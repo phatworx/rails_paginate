@@ -1,19 +1,16 @@
 module RailsPaginate::Renderers
   # base method
   class Base
-    cattr_accessor :inner_window, :outer_window
+    attr_reader :view, :collection, :options, :pager
 
-    @@inner_window = 2
-    @@outer_window = 2
-
-    attr_reader :view, :collection, :options
-
-    def initialize(view, collection, options = {})
+    def initialize(view, collection, pager, options = {})
       raise ArgumentError, "first argument muss be a RailsPaginate::Collection" unless collection.is_a? RailsPaginate::Collection
       raise ArgumentError, "second argument muss be a Hash" unless options.is_a? Hash
+      raise ArgumentError, "third argument muss be an instance of RailsPaginate::Pagers::Base" unless pager.is_a? RailsPaginate::Pagers::Base
       @options = options
       @collection = collection
       @view = view
+      @pager = pager
     end
 
     def url_for_page(page)
@@ -27,47 +24,6 @@ module RailsPaginate::Renderers
 
     def render
       raise StandardError, "render is not implemented"
-    end
-
-    def visible_pages
-      visible = []
-      last_found = 0
-      split = false
-      (1..collection.pages).each do |p|
-        # insert
-        if page_visible? p
-          visible << p
-          last_found = p
-          split = false
-        else
-          # need splitter
-          if not split and outer_window > 0 and last_found < p
-            visible << nil
-            split = true
-          end
-        end
-      end
-      visible
-    end
-
-    def inner_window_range
-      @inner_window_range ||= (current_page - inner_window)..(current_page + inner_window)
-    end
-
-    def page_visible?(p)
-      # outer
-      if outer_window > 0
-        return true if outer_window >= p
-        return true if (collection.pages - outer_window) < p
-      end
-
-      # current page
-      return true if current_page == p
-
-      # inner
-      return true if inner_window_range.include? p
-
-      false
     end
 
     protected
