@@ -1,7 +1,7 @@
 module RailsPaginate::Pagers
   # slider method
   class Slider < Base
-    cattr_reader :inner, :outer
+    cattr_accessor :inner, :outer
     @@inner = 3
     @@outer = 1
 

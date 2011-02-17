@@ -6,6 +6,18 @@ describe RailsPaginate::Pagers::Slider do
     lambda { RailsPaginate::Pagers::Slider.new }.should raise_error(ArgumentError)
   end
 
+  context :configure do
+    subject { RailsPaginate::Pagers::Slider }
+    context "#inner= 10" do
+      before { subject.inner = 10 }
+      its(:inner) { should eq 10 }
+    end
+    context "#outer= 10" do
+      before { subject.outer = 20 }
+      its(:outer) { should eq 20 }
+    end
+  end
+
   context "collection without items" do
     before { @array = [] }
     context "paginate page 1 with 10 per page" do
