@@ -8,10 +8,12 @@ a new rails 3 paginate plugin as will_paginate replacement
 * -> Array - 100%
 * -> ActiveRecord - 100%
 * -> Rspec - 100%
-* ViewHelper - 10%
+* ViewHelper - 70%
 * -> HtmlDefault
-* -> HtmlList
 * -> Rspec
+* Pager - 100%
+* -> Slider - 100%
+* -> Rspec - 100%
 
 == Installation
 Add the following line to your Gemfile
