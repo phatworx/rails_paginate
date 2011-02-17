@@ -2,7 +2,6 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe RailsPaginate::Helpers::ActionView do
   context "ActionView::Base.new" do
-    let(:action_view) { ActionView::Base.new }
     let(:collection) { (1..55).to_a.paginate }
     subject { action_view }
     specify { should respond_to :paginate }

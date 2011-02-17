@@ -11,6 +11,8 @@ module RailsPaginate::Helpers
       raise ArgumentError, "first argument muss be a RailsPaginate::Collection" unless args.first.is_a? RailsPaginate::Collection
 
       collection = args.first
+#      p @controller
+#      p url_for(:action => :index, :controller => :dummy)
 
       # renderer
       renderer = options[:renderer] || RailsPaginate.default_renderer
