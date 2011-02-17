@@ -8,7 +8,7 @@ module RailsPaginate::Helpers
     def paginate(*args)
       options = args.extract_options!
 
-      raise ArgumentError, "first argument muss be a RailsPaginate::Collection" unless args.first.is_a? RailsPaginate::Collection
+      raise ArgumentError, "first argument must be a RailsPaginate::Collection" unless args.first.is_a? RailsPaginate::Collection
 
       collection = args.first
 #      p @controller
