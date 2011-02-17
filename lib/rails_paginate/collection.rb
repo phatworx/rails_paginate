@@ -13,10 +13,15 @@ module RailsPaginate
       @array_or_relation = array_or_relation
 
       # save meta data
-      @per_page          = per_page || RailsPaginate.per_page
+      @per_page          = per_page || relation_per_page || RailsPaginate.per_page
 
       # load page with result
       load_page(page) unless page.nil?
+    end
+    
+    # check if the relation has a per_page
+    def relation_per_page
+      (array_or_relation.respond_to?(:per_page) ? array_or_relation.per_page : nil) unless array_or_relation.is_a? Array
     end
 
     # switch page

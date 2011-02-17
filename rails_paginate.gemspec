@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rails_paginate}
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marco Scholl"]
-  s.date = %q{2011-02-16}
+  s.date = %q{2011-02-17}
   s.description = %q{a new rails 3 paginate plugin as will_paginate replacement}
   s.email = %q{develop@marco-scholl.de}
   s.extra_rdoc_files = [
@@ -29,20 +29,21 @@ Gem::Specification.new do |s|
     "init.rb",
     "lib/rails_paginate.rb",
     "lib/rails_paginate/collection.rb",
-    "lib/rails_paginate/core_ext/active_record.rb",
-    "lib/rails_paginate/core_ext/array.rb",
-    "lib/rails_paginate/method.rb",
-    "lib/rails_paginate/method/base.rb",
-    "lib/rails_paginate/method/jumping.rb",
-    "lib/rails_paginate/method/sliding.rb",
-    "lib/rails_paginate/renderer.rb",
-    "lib/rails_paginate/renderer/base.rb",
-    "lib/rails_paginate/renderer/html_default.rb",
-    "lib/rails_paginate/renderer/html_list.rb",
+    "lib/rails_paginate/helpers.rb",
+    "lib/rails_paginate/helpers/action_view.rb",
+    "lib/rails_paginate/helpers/active_record.rb",
+    "lib/rails_paginate/helpers/array.rb",
+    "lib/rails_paginate/renderers.rb",
+    "lib/rails_paginate/renderers/base.rb",
+    "lib/rails_paginate/renderers/html_default.rb",
     "rails_paginate.gemspec",
     "spec/db/migrate/20110215200000_create_items.rb",
+    "spec/helpers/action_view_spec.rb",
+    "spec/helpers/active_record_spec.rb",
+    "spec/helpers/array_spec.rb",
     "spec/rails_paginate_spec.rb",
-    "spec/renderer_html_default_spec.rb",
+    "spec/renderers/base_spec.rb",
+    "spec/renderers/html_default_spec.rb",
     "spec/spec_helper.rb",
     "spec/support/10_activerecord.rb"
   ]
@@ -53,8 +54,12 @@ Gem::Specification.new do |s|
   s.summary = %q{a new rails 3 paginate plugin}
   s.test_files = [
     "spec/db/migrate/20110215200000_create_items.rb",
+    "spec/helpers/action_view_spec.rb",
+    "spec/helpers/active_record_spec.rb",
+    "spec/helpers/array_spec.rb",
     "spec/rails_paginate_spec.rb",
-    "spec/renderer_html_default_spec.rb",
+    "spec/renderers/base_spec.rb",
+    "spec/renderers/html_default_spec.rb",
     "spec/spec_helper.rb",
     "spec/support/10_activerecord.rb"
   ]
