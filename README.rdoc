@@ -13,7 +13,7 @@ a new rails 3 paginate plugin as will_paginate replacement
 * Pager
 * - Slider
 
- == Development status
+== Development status
 
 * Collection - 100%
 * - Array - 100%
