@@ -11,6 +11,14 @@ module RailsPaginate::Renderers
         html += view.content_tag(:li, :class => "previous_page") do
           link_to_page collection.previous_page, 'paginate.previous_page_label'
         end
+
+        (1..collection.pages).each do |page|
+          html += "\n"
+          html += view.content_tag(:li, :class => "pager") do
+            link_to_page page, 'paginate.pager'
+          end
+        end
+
         html += "\n"
         html += view.content_tag(:li, :class => "next_page") do
           link_to_page collection.next_page, 'paginate.next_page_label'

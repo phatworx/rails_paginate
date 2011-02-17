@@ -28,14 +28,15 @@ module RailsPaginate::Renderers
     protected
 
     def link_to_page(page, key, options = {})
+      css_class = "link #{options[:class]} #{page == collection.current_page ? 'current' : ''}"
       if page.nil?
-        view.content_tag :span, :class => "link #{options[:class]}" do
+        view.content_tag :span, :class => css_class do
           view.content_tag :span, :class => "inline" do
             view.t(key)
           end
         end
       else
-        view.link_to url_for_page(page), :class => "link #{options[:class]}", :alt => view.strip_tags(view.t(key, :page => page)) do
+        view.link_to url_for_page(page), :class => css_class, :alt => view.strip_tags(view.t(key, :page => page)) do
           view.content_tag :span, :class => "inline" do
             view.t(key, :page => page)
           end
