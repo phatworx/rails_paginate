@@ -30,7 +30,6 @@ describe RailsPaginate::Helpers::ActionView do
     context "#paginate with class => dummy" do
       before { @pagination = action_view.paginate collection, :class => "dummy" }
       subject { @pagination }
-
       it { subject.should match(/<div class="pagination dummy">/) }
     end
 
