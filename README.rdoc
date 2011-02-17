@@ -9,8 +9,8 @@ a new rails 3 paginate plugin as will_paginate replacement
 * -> ActiveRecord - 100%
 * -> Rspec - 100%
 * ViewHelper - 70%
-* -> HtmlDefault
-* -> Rspec
+* -> HtmlDefault 80%
+* -> Rspec 5%
 * Pager - 100%
 * -> Slider - 100%
 * -> Rspec - 100%
