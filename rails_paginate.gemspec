@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rails_paginate}
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marco Scholl"]
@@ -43,6 +43,8 @@ Gem::Specification.new do |s|
     "spec/helpers/action_view_spec.rb",
     "spec/helpers/active_record_spec.rb",
     "spec/helpers/array_spec.rb",
+    "spec/pagers/base_spec.rb",
+    "spec/pagers/slider_spec.rb",
     "spec/rails_paginate_spec.rb",
     "spec/renderers/base_spec.rb",
     "spec/renderers/html_default_spec.rb",
@@ -59,6 +61,8 @@ Gem::Specification.new do |s|
     "spec/helpers/action_view_spec.rb",
     "spec/helpers/active_record_spec.rb",
     "spec/helpers/array_spec.rb",
+    "spec/pagers/base_spec.rb",
+    "spec/pagers/slider_spec.rb",
     "spec/rails_paginate_spec.rb",
     "spec/renderers/base_spec.rb",
     "spec/renderers/html_default_spec.rb",
