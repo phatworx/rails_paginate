@@ -56,13 +56,5 @@ module RailsPaginate::Renderers
       view.t(*args)
     end
 
-    def inner_window
-      self.class.inner_window
-    end
-
-    def outer_window
-      self.class.outer_window
-    end
-
   end
 end
