@@ -2,8 +2,8 @@ module RailsPaginate::Pagers
   # slider method
   class Slider < Base
     cattr_reader :inner, :outer
-    @@inner = 2
-    @@outer = 2
+    @@inner = 3
+    @@outer = 1
 
     def visible_pages
       visible = []
@@ -45,6 +45,14 @@ module RailsPaginate::Pagers
       return true if inner_range.include? page
 
       false
+    end
+
+    def inner
+      options[:inner] || self.class.inner
+    end
+
+    def outer
+      options[:outer] || self.class.outer
     end
 
   end

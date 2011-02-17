@@ -1,9 +1,10 @@
 module RailsPaginate::Pagers
   # base method
   class Base
-    attr_reader :collection
-    def initialize(collection)
+    attr_reader :collection, :options
+    def initialize(collection, options = {})
       @collection = collection
+      @options = options
     end
 
     def current_page
