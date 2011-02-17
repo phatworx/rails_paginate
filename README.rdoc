@@ -5,27 +5,27 @@ a new rails 3 paginate plugin as will_paginate replacement
 == Features
 
 * Collection support
-** Array
-** ActiveRecord
+* - Array
+* - ActiveRecord
 * View helper for pagination
 * Renderer
-** HTML list renderer (:html_default)
+* - HTML list renderer (:html_default)
 * Pager
-** Slider
+* - Slider
 
  == Development status
 
 * Collection - 100%
-** Array - 100%
-** ActiveRecord - 100%
-** Rspec - 100%
+* - Array - 100%
+* - ActiveRecord - 100%
+* - Rspec - 100%
 * ViewHelper - 70%
-** HtmlDefault 80%
-** Rspec 5%
+* - HtmlDefault 80%
+* - Rspec 5%
 * Pager - 100%
-** Jumper - 0%
-** Slider - 100%
-** Rspec - 100%
+* - Jumper - 0%
+* - Slider - 100%
+* - Rspec - 100%
 
 == Installation
 Add the following line to your Gemfile
