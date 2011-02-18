@@ -13,6 +13,7 @@ require 'active_support/test_case'
 require 'action_controller'
 require 'action_controller/test_case'
 require 'action_dispatch'
+require 'rspec-hpricot-matchers'
 require 'rails_paginate'
 
 # Requires supporting files with custom matchers and macros, etc,
@@ -20,6 +21,8 @@ require 'rails_paginate'
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
+  config.include(HpricotSpec::Matchers)
+  
   def action_view
     x = ActionView::Base.new
     x.controller = action_controller
