@@ -1,6 +1,11 @@
 module RailsPaginate::Pagers
   # base method
   class Base
+    # setup
+    def setup
+      yield self
+    end
+
     # default reader
     attr_reader :collection, :options
 
