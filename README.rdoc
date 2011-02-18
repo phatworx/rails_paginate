@@ -12,27 +12,41 @@ a new rails 3 paginate plugin as will_paginate replacement
 * - HTML list renderer (:html_default)
 * Pager
 * - Slider
-
-== Development status
-
-* Collection - 100%
-* - Array - 100%
-* - ActiveRecord - 100%
-* - Rspec - 100%
-* ViewHelper - 70%
-* - HtmlDefault 80%
-* - Rspec 5%
-* Pager - 100%
-* - Jumper - 0%
-* - Slider - 100%
-* - Rspec - 100%
+* I18n support
 
 == Installation
 Add the following line to your Gemfile
   gem "rails_paginate"
 
 If you want to use it as plugin
-  rails plugin install git://github.com/traxanos/rails_paginate.git
+  rails plugin install git://github.com/phatworx/rails_paginate.git
+
+== Configuration
+
+  RailsPaginate.setup do |config|
+    # config.per_page = 20
+    # config.page_param = :page
+
+    # configure default renderer
+    # config.default_renderer = :html_default
+
+    # configure renderer
+    # config.renderer :html_default do |renderer|
+      # renderer.show_first_page = false
+      # renderer.show_last_page = false
+      # renderer.show_next_page = false
+      # renderer.show_previous_page = false
+    # end
+
+    # configure default default_pager
+    # config.default_pager = :slider
+
+    # configure pager
+    # config.pager :slider do |pager|
+      # pager.inner = 3
+      # pager.outer = 1
+    # end
+  end
 
 == Using
 
@@ -43,6 +57,10 @@ If you want to use it as plugin
 === Array
 
   (1..555).to_a.paginate :page => 1, :per_page => 10
+
+== Requirements
+
+* Rails 3 (http://github.com/rails/rails)
 
 == Test environments
 

@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 # setup paginate
 RailsPaginate.setup do |config|
   # config.per_page = 20
