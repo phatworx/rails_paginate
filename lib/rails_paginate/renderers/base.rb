@@ -14,12 +14,7 @@ module RailsPaginate::Renderers
     end
 
     def url_for_page(page)
-      # todo: fix url_for so did't neet fallback
-      begin
-        view.url_for(view.default_url_options.merge({:page => page}))
-      rescue
-        "?page=#{page}"
-      end
+      view.url_for(view.default_url_options.merge({:page => page}))
     end
 
     def render

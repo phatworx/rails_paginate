@@ -7,6 +7,7 @@ group :development do
   gem "jeweler"
   gem "rspec"
   gem "yard"
+  gem "rspec-rails"
   if defined? JRUBY_VERSION
     gem "activerecord-jdbc-adapter"
     gem "activerecord-jdbcsqlite3-adapter"

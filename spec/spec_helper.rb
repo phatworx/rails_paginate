@@ -23,27 +23,15 @@ RSpec.configure do |config|
   def action_view
     x = ActionView::Base.new
     x.controller = action_controller
-    x.request = action_controller.request
+    x.stub!(:url_for).and_return do |*args|
+      options = args.extract_options!
+      "?page=#{options[:page]}"
+    end
     x
   end
 
   def action_controller
-    x = DummyController.new
-    x.request = test_request
-    x.response = test_response
-    x
-  end
-
-  def routes
-    ActionDispatch::Routing::RouteSet.new.draw { root :to => "index#dummy" }
-  end
-
-  def test_request
-    ActionController::TestRequest.new
-  end
-
-  def test_response
-    ActionController::TestResponse.new
+    ActionController::Base.new
   end
 
 end
