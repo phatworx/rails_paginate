@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marco Scholl"]
-  s.date = %q{2011-02-17}
+  s.date = %q{2011-02-19}
   s.description = %q{a new rails 3 paginate plugin as will_paginate replacement}
   s.email = %q{develop@marco-scholl.de}
   s.extra_rdoc_files = [
@@ -49,8 +49,7 @@ Gem::Specification.new do |s|
     "spec/renderers/base_spec.rb",
     "spec/renderers/html_default_spec.rb",
     "spec/spec_helper.rb",
-    "spec/support/10_active_record.rb",
-    "spec/support/20_action_controller.rb"
+    "spec/support/10_active_record.rb"
   ]
   s.homepage = %q{http://github.com/phatworx/rails_paginate}
   s.licenses = ["MIT"]
@@ -67,8 +66,7 @@ Gem::Specification.new do |s|
     "spec/renderers/base_spec.rb",
     "spec/renderers/html_default_spec.rb",
     "spec/spec_helper.rb",
-    "spec/support/10_active_record.rb",
-    "spec/support/20_action_controller.rb"
+    "spec/support/10_active_record.rb"
   ]
 
   if s.respond_to? :specification_version then
@@ -81,6 +79,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_development_dependency(%q<yard>, [">= 0"])
+      s.add_development_dependency(%q<rspec-hpricot-matchers>, [">= 0"])
       s.add_development_dependency(%q<simplecov>, [">= 0"])
       s.add_development_dependency(%q<sqlite3>, [">= 0"])
     else
@@ -90,6 +89,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<yard>, [">= 0"])
+      s.add_dependency(%q<rspec-hpricot-matchers>, [">= 0"])
       s.add_dependency(%q<simplecov>, [">= 0"])
       s.add_dependency(%q<sqlite3>, [">= 0"])
     end
@@ -100,6 +100,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 0"])
     s.add_dependency(%q<yard>, [">= 0"])
+    s.add_dependency(%q<rspec-hpricot-matchers>, [">= 0"])
     s.add_dependency(%q<simplecov>, [">= 0"])
     s.add_dependency(%q<sqlite3>, [">= 0"])
   end
