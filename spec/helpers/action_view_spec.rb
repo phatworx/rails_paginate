@@ -29,8 +29,8 @@ describe RailsPaginate::Helpers::ActionView do
 
     context "#paginate with class => dummy" do
       subject { action_view.paginate collection, :class => "dummy" }
-      it("should have div with class paginate and dummy") { subject.should have_tag('div[@class=pagination dummy]', :count => 1) }
-      it("should have div with ul") { subject.should have_tag('div > ul', :count => 1) }
+      it("should have one div.pagination.dummy") { subject.should have_tag('div.pagination.dummy', :count => 1) }
+      it("should have one div with ul") { subject.should have_tag('div > ul', :count => 1) }
     end
 
   end
