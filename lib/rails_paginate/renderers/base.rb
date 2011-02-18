@@ -3,6 +3,7 @@ module RailsPaginate::Renderers
   class Base
     attr_reader :view, :collection, :options, :pager
 
+    # setup rails_paginate collection
     def initialize(view, collection, pager, options = {})
       raise ArgumentError, "first argument must be a RailsPaginate::Collection" unless collection.is_a? RailsPaginate::Collection
       raise ArgumentError, "second argument must be a Hash" unless options.is_a? Hash
@@ -13,16 +14,19 @@ module RailsPaginate::Renderers
       @pager = pager
     end
 
+    # build url
     def url_for_page(page)
       view.url_for(view.default_url_options.merge({:page => page}))
     end
 
+    # abstrack renderer
     def render
       raise StandardError, "render is not implemented"
     end
 
     protected
 
+    # link to page with i18n support
     def link_to_page(page, key, options = {})
       css_class = "#{options[:class]} #{page == current_page ? 'current' : ''}"
       if key.nil?
@@ -39,14 +43,17 @@ module RailsPaginate::Renderers
       collection.current_page
     end
 
+    # map to view helper
     def content_tag(*args, &block)
       view.content_tag(*args, &block)
     end
 
+    # map to view helper
     def link_to(*args, &block)
       view.link_to(*args, &block)
     end
 
+    # map to view helper
     def t(*args)
       view.t(*args)
     end

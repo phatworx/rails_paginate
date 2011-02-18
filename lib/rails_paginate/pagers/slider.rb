@@ -1,10 +1,16 @@
 module RailsPaginate::Pagers
   # slider method
   class Slider < Base
-    cattr_accessor :inner, :outer
+
+    # how much pages should display around current_page
+    cattr_accessor :inner
     @@inner = 3
+
+    # how much pages should display at start and end
+    cattr_accessor :outer
     @@outer = 1
 
+    # build array with all visible pages
     def visible_pages
       visible = []
       last_inserted = 0
@@ -26,6 +32,7 @@ module RailsPaginate::Pagers
       visible
     end
 
+    # build dummy inner range
     def inner_range
       @inner_range ||= (current_page - inner)..(current_page + inner)
     end
@@ -47,10 +54,12 @@ module RailsPaginate::Pagers
       false
     end
 
+    # get option of inner
     def inner
       options[:inner] || self.class.inner
     end
 
+    # get option of out
     def outer
       options[:outer] || self.class.outer
     end

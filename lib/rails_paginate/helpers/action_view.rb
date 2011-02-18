@@ -1,4 +1,5 @@
 module RailsPaginate::Helpers
+  # ActionView extension for create paginate view helper
   module ActionView
     # view_helper for paginate
     #

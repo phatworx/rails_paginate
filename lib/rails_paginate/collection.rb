@@ -50,10 +50,12 @@ module RailsPaginate
       self.replace result.nil? ? [] : result
     end
 
+    # total count of array or relation
     def total
       @total ||= array_or_relation.count
     end
 
+    # count of pages
     def pages
       @pages ||= total == 0 ? 1 : (total / per_page.to_f).ceil
     end
@@ -68,12 +70,12 @@ module RailsPaginate
       total > per_page
     end
 
-    # return first page
+    # first page
     def first_page
       1
     end
 
-    # return last page
+    # last page
     def last_page
       pages
     end
@@ -88,12 +90,12 @@ module RailsPaginate
       current_page == first_page
     end
 
-    # return next page
+    # next page
     def next_page
       current_page < pages ? (current_page + 1) : nil
     end
 
-    # return previous page
+    # previous page
     def previous_page
       current_page > 1 ? (current_page - 1) : nil
     end

@@ -1,6 +1,7 @@
 module RailsPaginate::Renderers
-  # normale renderer
+  # default html renderer
   class HtmlDefault < Base
+    
     # show first page item
     cattr_accessor :show_first_page
     @@show_first_page = true
@@ -17,6 +18,7 @@ module RailsPaginate::Renderers
     cattr_accessor :show_previous_page
     @@show_previous_page = true
 
+    # render html for pagination
     def render
       content_tag(:ul) do
         html = "\n"
