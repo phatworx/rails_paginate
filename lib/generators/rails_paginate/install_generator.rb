@@ -1,4 +1,4 @@
-module DeviseSecurityExtension
+module RailsPaginate
   module Generators # :nodoc:
     # Install Generator
     class InstallGenerator < Rails::Generators::Base
