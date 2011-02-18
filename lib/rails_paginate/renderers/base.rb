@@ -1,11 +1,6 @@
 module RailsPaginate::Renderers
   # base method
   class Base
-    # setup
-    def setup
-      yield self
-    end
-
     attr_reader :view, :collection, :options, :pager
 
     # setup rails_paginate collection

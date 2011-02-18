@@ -35,7 +35,11 @@ module RailsPaginate
       raise ArgumentError, "renderer #{renderer} is not valid" unless (renderer.is_a? Symbol or renderer.is_a? String or renderer.is_a? Class)
       renderer = renderer.to_s if renderer.is_a? Symbol
       renderer = "rails_paginate/renderers/#{renderer}".camelize.constantize if renderer.is_a? String
-      renderer
+      if block_given?
+        yield renderer
+      else
+        renderer
+      end
     end
 
     # return pager
@@ -43,7 +47,11 @@ module RailsPaginate
       raise ArgumentError, "pager #{pager} is not valid" unless (pager.is_a? Symbol or pager.is_a? String or pager.is_a? Class)
       pager = pager.to_s if pager.is_a? Symbol
       pager = "rails_paginate/pagers/#{pager}".camelize.constantize if pager.is_a? String
-      pager
+      if block_given?
+        yield pager
+      else
+        pager
+      end
     end
 
     # init rails paginate
