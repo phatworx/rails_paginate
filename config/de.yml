@@ -1,0 +1,7 @@
+de:
+  paginate:
+    first_page_label: Anfang
+    last_page_label: Ende
+    previous_page_label: "« Zurück"
+    next_page_label: "Weiter »"
+    pager: %{page}
