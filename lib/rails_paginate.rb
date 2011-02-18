@@ -56,6 +56,7 @@ module RailsPaginate
 
     # init rails paginate
     def init
+      require 'rails_paginate/rails' if defined?(::Rails::Engine)
       ::Array.send(:include, Helpers::Array)
       ::ActiveRecord::Base.send(:extend, Helpers::ActiveRecord) if defined?(::ActiveRecord::Base)
       ::ActiveRecord::Relation.send(:include, Helpers::ActiveRecord) if defined?(::ActiveRecord::Relation)
