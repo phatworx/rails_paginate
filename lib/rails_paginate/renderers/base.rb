@@ -16,7 +16,7 @@ module RailsPaginate::Renderers
 
     # build url
     def url_for_page(page)
-      view.url_for(view.default_url_options.merge({:page => page}))
+      view.url_for(view.default_url_options.merge({page_param.to_sym => page}))
     end
 
     # abstrack renderer
@@ -36,6 +36,11 @@ module RailsPaginate::Renderers
       else
         link_to t(key, :page => page), url_for_page(page), :class => css_class, :alt => view.strip_tags(t(key, :page => page))
       end
+    end
+
+    #
+    def page_param
+      options[:page_param] || RailsPaginate.page_param
     end
 
     # helper
