@@ -29,17 +29,43 @@ GEM
       activemodel (= 3.0.4)
       activesupport (= 3.0.4)
     activesupport (3.0.4)
+    addressable (2.2.4)
     arel (2.0.8)
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     builder (2.1.2)
+    data_objects (0.10.3)
+      addressable (~> 2.1)
     diff-lcs (1.1.2)
+    dm-aggregates (1.0.2)
+      dm-core (~> 1.0.2)
+    dm-core (1.0.2)
+      addressable (~> 2.2)
+      extlib (~> 0.9.15)
+    dm-do-adapter (1.0.2)
+      data_objects (~> 0.10.2)
+      dm-core (~> 1.0.2)
+    dm-migrations (1.0.2)
+      dm-core (~> 1.0.2)
+    dm-sqlite-adapter (1.0.2)
+      dm-do-adapter (~> 1.0.2)
+      do_sqlite3 (~> 0.10.2)
+    do_jdbc (0.10.3-java)
+      data_objects (= 0.10.3)
+    do_sqlite3 (0.10.3)
+      data_objects (= 0.10.3)
+    do_sqlite3 (0.10.3-java)
+      data_objects (= 0.10.3)
+      do_jdbc (= 0.10.3)
+      jdbc-sqlite3 (>= 3.5.8)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    extlib (0.9.15)
     git (1.2.5)
     hpricot (0.8.3)
     hpricot (0.8.3-java)
     i18n (0.5.0)
+    jdbc-sqlite3 (3.6.14.2.056-java)
     jeweler (1.5.2)
       bundler (~> 1.0.0)
       git (>= 1.2.5)
@@ -97,6 +123,10 @@ PLATFORMS
 DEPENDENCIES
   autotest
   bundler
+  dm-aggregates
+  dm-core
+  dm-migrations
+  dm-sqlite-adapter
   jeweler
   rails (~> 3.0.0)
   rspec

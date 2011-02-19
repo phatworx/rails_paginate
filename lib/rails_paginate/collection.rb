@@ -6,19 +6,19 @@ module RailsPaginate
     # initialize collection
     def initialize(array_or_relation, page = nil, per_page = nil)
       # validate
-      raise ArgumentError, "per_page is not valid" if not per_page.nil? and per_page <= 0 
+      raise ArgumentError, "per_page is not valid" if not per_page.nil? and per_page <= 0
       raise ArgumentError, "result is not an array or relation" unless array_or_relation.respond_to? :count
 
       # array_or_relation
       @array_or_relation = array_or_relation
 
       # save meta data
-      @per_page          = per_page || relation_per_page || RailsPaginate.per_page
+      @per_page = per_page || relation_per_page || RailsPaginate.per_page
 
       # load page with result
       load_page(page) unless page.nil?
     end
-    
+
     # check if the relation has a per_page
     def relation_per_page
       (array_or_relation.respond_to?(:per_page) ? array_or_relation.per_page : nil) unless array_or_relation.is_a? Array
@@ -41,8 +41,13 @@ module RailsPaginate
 
     # load result from input array_or_relation to internal array
     def load_result
+      p array_or_relation.class
+      p array_or_relation.is_a? DataMapper::Resource
+
       if array_or_relation.is_a? Array
         result = array_or_relation[offset..(offset + per_page - 1)]
+      elsif array_or_relation.is_a? DataMapper::Resource
+        result = array_or_relation.all(:limit => per_page, :offset => offset)
       else
         result = array_or_relation.limit(per_page).offset(offset).all
       end

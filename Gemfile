@@ -12,6 +12,10 @@ group :development do
     gem "activerecord-jdbc-adapter"
     gem "activerecord-jdbcsqlite3-adapter"
   else
+    gem 'dm-core'
+    gem 'dm-sqlite-adapter'
+    gem 'dm-migrations'
+    gem 'dm-aggregates'
     gem 'simplecov', :require => false
     gem "sqlite3"
   end

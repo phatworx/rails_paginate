@@ -61,6 +61,7 @@ module RailsPaginate
       ::ActiveRecord::Base.send(:extend, Helpers::ActiveRecord) if defined?(::ActiveRecord::Base)
       ::ActiveRecord::Relation.send(:include, Helpers::ActiveRecord) if defined?(::ActiveRecord::Relation)
       ::ActionView::Base.send(:include, Helpers::ActionView) if defined?(::ActionView::Base)
+      ::DataMapper::Model.send(:include, Helpers::DataMapper) if defined?(::DataMapper::Model)
     end
   end
 end
