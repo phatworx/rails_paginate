@@ -15,11 +15,12 @@ a new rails 3 paginate plugin as will_paginate replacement
 * I18n support
 
 == Installation
-Add the following line to your Gemfile
+
+add to Gemfile
   gem "rails_paginate"
 
-If you want to use it as plugin
-  rails plugin install git://github.com/phatworx/rails_paginate.git
+after bundle execute
+  rails g rails_paginate:install
 
 == Configuration
 
