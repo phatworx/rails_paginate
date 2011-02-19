@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rails_paginate}
-  s.version = "0.0.4"
+  s.version = "0.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marco Scholl"]
@@ -27,6 +27,10 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "init.rb",
+    "lib/generators/rails_paginate/install_generator.rb",
+    "lib/generators/templates/config/initializers/paginate.rb",
+    "lib/generators/templates/config/locales/de.yml",
+    "lib/generators/templates/config/locales/en.yml",
     "lib/rails_paginate.rb",
     "lib/rails_paginate/collection.rb",
     "lib/rails_paginate/helpers.rb",
@@ -36,6 +40,7 @@ Gem::Specification.new do |s|
     "lib/rails_paginate/pagers.rb",
     "lib/rails_paginate/pagers/base.rb",
     "lib/rails_paginate/pagers/slider.rb",
+    "lib/rails_paginate/rails.rb",
     "lib/rails_paginate/renderers.rb",
     "lib/rails_paginate/renderers/base.rb",
     "lib/rails_paginate/renderers/html_default.rb",
