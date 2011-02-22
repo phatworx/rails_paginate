@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rails_paginate}
-  s.version = "0.0.5"
+  s.version = "0.0.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marco Scholl"]
-  s.date = %q{2011-02-19}
+  s.date = %q{2011-02-22}
   s.description = %q{a new rails 3 paginate plugin as will_paginate replacement}
   s.email = %q{develop@marco-scholl.de}
   s.extra_rdoc_files = [
