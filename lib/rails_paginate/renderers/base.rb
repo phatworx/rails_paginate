@@ -27,14 +27,14 @@ module RailsPaginate::Renderers
     protected
 
     # link to page with i18n support
-    def link_to_page(page, key, options = {})
-      css_class = "#{options[:class]} #{page == current_page ? 'current' : ''}"
+    def link_to_page(page, key, link_options = {})
+      css_class = "#{link_options[:class]} #{page == current_page ? 'current' : ''}"
       if key.nil?
         content_tag :span, "..", :class => "spacer"
       elsif page.nil?
         content_tag :span, t(key), :class => "#{css_class} unavailable"
       else
-        link_to t(key, :page => page), url_for_page(page), :class => css_class, :alt => view.strip_tags(t(key, :page => page))
+        link_to t(key, :page => page), url_for_page(page), :class => css_class, :alt => view.strip_tags(t(key, :page => page)), :remote => options[:remote], :method => options[:method]
       end
     end
 
