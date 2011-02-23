@@ -16,7 +16,7 @@ module RailsPaginate::Renderers
 
     # build url
     def url_for_page(page)
-      view.url_for(view.default_url_options.merge({page_param.to_sym => page}))
+      view.url_for(view.default_url_options.merge({page_param.to_sym => page}).merge(options[:params] || {}))
     end
 
     # abstrack renderer
