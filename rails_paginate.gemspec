@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.version = "0.0.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Marco Scholl"]
-  s.date = %q{2011-02-22}
+  s.authors = [%q{Marco Scholl}]
+  s.date = %q{2011-08-18}
   s.description = %q{a new rails 3 paginate plugin as will_paginate replacement}
   s.email = %q{develop@marco-scholl.de}
   s.extra_rdoc_files = [
@@ -57,28 +57,16 @@ Gem::Specification.new do |s|
     "spec/support/10_active_record.rb"
   ]
   s.homepage = %q{http://github.com/phatworx/rails_paginate}
-  s.licenses = ["MIT"]
-  s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.5.0}
+  s.licenses = [%q{MIT}]
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.6}
   s.summary = %q{a new rails 3 paginate plugin}
-  s.test_files = [
-    "spec/helpers/action_view_spec.rb",
-    "spec/helpers/active_record_spec.rb",
-    "spec/helpers/array_spec.rb",
-    "spec/pagers/base_spec.rb",
-    "spec/pagers/slider_spec.rb",
-    "spec/rails_paginate_spec.rb",
-    "spec/renderers/base_spec.rb",
-    "spec/renderers/html_default_spec.rb",
-    "spec/spec_helper.rb",
-    "spec/support/10_active_record.rb"
-  ]
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<rails>, ["~> 3.0.0"])
+      s.add_runtime_dependency(%q<rails>, [">= 3.0.0"])
       s.add_development_dependency(%q<autotest>, [">= 0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
@@ -88,7 +76,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<simplecov>, [">= 0"])
       s.add_development_dependency(%q<sqlite3>, [">= 0"])
     else
-      s.add_dependency(%q<rails>, ["~> 3.0.0"])
+      s.add_dependency(%q<rails>, [">= 3.0.0"])
       s.add_dependency(%q<autotest>, [">= 0"])
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
@@ -99,7 +87,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<sqlite3>, [">= 0"])
     end
   else
-    s.add_dependency(%q<rails>, ["~> 3.0.0"])
+    s.add_dependency(%q<rails>, [">= 3.0.0"])
     s.add_dependency(%q<autotest>, [">= 0"])
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])

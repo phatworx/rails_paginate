@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe RailsPaginate::Renderers::HtmlDefault do
-
+  before { RailsPaginate.setup { |setup| setup.per_page = 20 } }
 
   context "empty collection" do
     let(:collection) { [].paginate }
@@ -30,7 +30,7 @@ describe RailsPaginate::Renderers::HtmlDefault do
 
         it("should not have the div at first") { subject.should_not have_tag('> div', :count => 1) }
         it("should have one ul") { subject.should have_tag('ul') }
-        it("should have one li") { subject.should have_tag('ul > li', :count => 9) }
+        it("should have 9 li") { subject.should have_tag('ul > li', :count => 9) }
         [:first_page, :previous_page, :first_pager, :last_pager, :next_page, :last_page].each do |class_attr|
           it("should have one li.#{class_attr}") { subject.should have_tag("ul > li.#{class_attr}", :count => 1) }
         end

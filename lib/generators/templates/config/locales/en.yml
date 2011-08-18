@@ -1,7 +1,7 @@
 de:
   paginate:
-    first_page_label: first
-    last_page_label: last
+    first_page_label: "first"
+    last_page_label: "last"
     previous_page_label: "« previous"
     next_page_label: "next »"
-    pager: %{page}
+    pager: "%{page}"
